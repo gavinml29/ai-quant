@@ -1,0 +1,339 @@
+{
+  "smic": {
+    "name": "中芯国际",
+    "code": "688981.SH",
+    "total_days": 236,
+    "main_force_assessment": {
+      "level": "一般",
+      "description": "有一定主力活动，但信号不够密集",
+      "activity_ratio": 3.4,
+      "accumulation_signals": 0,
+      "pump_signals": 8,
+      "distribution_signals": 0,
+      "shakeout_signals": 0,
+      "distribution_ratio": 0.0,
+      "risk_note": "出货信号较少，主力控盘较好"
+    },
+    "accumulation": [],
+    "pump_signals": [
+      {
+        "date": "20250822",
+        "price": 103.97,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20250828",
+        "price": 119.22,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20251222",
+        "price": 120.45,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260105",
+        "price": 129.95,
+        "reasons": [
+          "倍量长阳突破(主力拉升)",
+          "跳空放量高开(强势突破)"
+        ],
+        "score": 5
+      },
+      {
+        "date": "20260427",
+        "price": 116.58,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260430",
+        "price": 118.73,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260520",
+        "price": 133.81,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260525",
+        "price": 156.0,
+        "reasons": [
+          "倍量长阳突破(主力拉升)",
+          "跳空放量高开(强势突破)"
+        ],
+        "score": 5
+      }
+    ],
+    "distribution": [],
+    "shakeout": [],
+    "swing_signals": {
+      "signals": [
+        {
+          "date": "20251029",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 133.0,
+          "reason": "缩量回踩MA20支撑",
+          "stop_loss": 120.87,
+          "targets": [
+            139.65,
+            146.3,
+            152.95
+          ]
+        },
+        {
+          "date": "20251103",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 120.21,
+          "profit_pct": -9.6,
+          "reason": "止损触发(-9.6%)",
+          "entry_price": 133.0
+        },
+        {
+          "date": "20251120",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 116.78,
+          "reason": "缩量回踩MA60强支撑",
+          "stop_loss": 108.61,
+          "targets": [
+            122.62,
+            128.46,
+            134.3
+          ]
+        },
+        {
+          "date": "20260129",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 122.4,
+          "profit_pct": 4.8,
+          "reason": "放量跌破MA20(+4.8%)",
+          "entry_price": 116.78
+        },
+        {
+          "date": "20260210",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 116.2,
+          "reason": "缩量回踩MA60强支撑",
+          "stop_loss": 108.07,
+          "targets": [
+            122.01,
+            127.82,
+            133.63
+          ]
+        },
+        {
+          "date": "20260303",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 108.31,
+          "profit_pct": -6.8,
+          "reason": "放量跌破MA20(+-6.8%)",
+          "entry_price": 116.2
+        },
+        {
+          "date": "20260415",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 103.91,
+          "reason": "倍量突破+均线金叉",
+          "stop_loss": 91.2,
+          "targets": [
+            109.11,
+            114.3,
+            119.5
+          ]
+        },
+        {
+          "date": "20260506",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 123.1,
+          "profit_pct": 18.5,
+          "reason": "高位放量长上影(+18.5%)",
+          "entry_price": 103.91
+        },
+        {
+          "date": "20260520",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 133.81,
+          "reason": "倍量突破+均线金叉",
+          "stop_loss": 103.27,
+          "targets": [
+            140.5,
+            147.19,
+            153.88
+          ]
+        },
+        {
+          "date": "20260608",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 121.92,
+          "profit_pct": -8.9,
+          "reason": "止损触发(-8.9%)",
+          "entry_price": 133.81
+        }
+      ],
+      "current_position": null
+    }
+  },
+  "gigadevice": {
+    "name": "兆易创新",
+    "code": "603986.SH",
+    "total_days": 242,
+    "main_force_assessment": {
+      "level": "微弱",
+      "description": "主力介入迹象不明显，走势偏自然/散户化",
+      "activity_ratio": 2.1,
+      "accumulation_signals": 0,
+      "pump_signals": 4,
+      "distribution_signals": 0,
+      "shakeout_signals": 1,
+      "distribution_ratio": 0.0,
+      "risk_note": "出货信号较少，主力控盘较好"
+    },
+    "accumulation": [],
+    "pump_signals": [
+      {
+        "date": "20250821",
+        "price": 137.16,
+        "reasons": [
+          "倍量长阳突破(主力拉升)",
+          "跳空放量高开(强势突破)"
+        ],
+        "score": 5
+      },
+      {
+        "date": "20250822",
+        "price": 150.88,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20250825",
+        "price": 157.8,
+        "reasons": [
+          "连续温和放量上涨(推土机拉升)",
+          "跳空放量高开(强势突破)"
+        ],
+        "score": 4
+      },
+      {
+        "date": "20260105",
+        "price": 235.68,
+        "reasons": [
+          "倍量长阳突破(主力拉升)"
+        ],
+        "score": 3
+      }
+    ],
+    "distribution": [],
+    "shakeout": [
+      {
+        "date": "20260610",
+        "price": 480.84,
+        "reasons": [
+          "缩量急跌(典型洗盘)"
+        ],
+        "score": 3
+      }
+    ],
+    "swing_signals": {
+      "signals": [
+        {
+          "date": "20251217",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 202.18,
+          "reason": "缩量回踩MA20支撑",
+          "stop_loss": 176.0,
+          "targets": [
+            212.29,
+            222.4,
+            232.51
+          ]
+        },
+        {
+          "date": "20260303",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 272.89,
+          "profit_pct": 35.0,
+          "reason": "放量跌破MA20(+35.0%)",
+          "entry_price": 202.18
+        },
+        {
+          "date": "20260318",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 311.25,
+          "reason": "倍量突破+均线金叉",
+          "stop_loss": 264.0,
+          "targets": [
+            326.81,
+            342.38,
+            357.94
+          ]
+        },
+        {
+          "date": "20260320",
+          "action": "SELL",
+          "action_cn": "📉 波段卖出",
+          "price": 290.2,
+          "profit_pct": -6.8,
+          "reason": "放量跌破MA20(+-6.8%)",
+          "entry_price": 311.25
+        },
+        {
+          "date": "20260518",
+          "action": "BUY",
+          "action_cn": "📈 波段买入",
+          "price": 400.0,
+          "reason": "倍量突破+均线金叉",
+          "stop_loss": 268.59,
+          "targets": [
+            420.0,
+            440.0,
+            460.0
+          ]
+        }
+      ],
+      "current_position": {
+        "status": "holding",
+        "entry_date": "20260518",
+        "entry_price": 400.0,
+        "current_price": 840.0,
+        "profit_pct": 110.0,
+        "suggestion": "继续持有",
+        "stop_loss": 372.0,
+        "next_target": 460.0
+      }
+    }
+  }
+}

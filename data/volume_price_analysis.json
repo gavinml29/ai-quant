@@ -1,0 +1,442 @@
+{
+  "smic": {
+    "name": "中芯国际",
+    "buy_signals": [
+      {
+        "date": "20250822",
+        "idx": 39,
+        "price": 103.97,
+        "vol": 2061948.09,
+        "vol_ratio": 3.72,
+        "pct_chg": 14.19,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20250828",
+        "idx": 43,
+        "price": 119.22,
+        "vol": 2420325.11,
+        "vol_ratio": 3.0,
+        "pct_chg": 17.4466,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20251021",
+        "idx": 69,
+        "price": 127.19,
+        "vol": 784150.88,
+        "vol_ratio": 0.66,
+        "pct_chg": 3.7185,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20251029",
+        "idx": 75,
+        "price": 133.0,
+        "vol": 688460.74,
+        "vol_ratio": 0.7,
+        "pct_chg": 0.2336,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20251222",
+        "idx": 113,
+        "price": 120.45,
+        "vol": 810113.69,
+        "vol_ratio": 2.1,
+        "pct_chg": 6.0019,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260105",
+        "idx": 121,
+        "price": 129.95,
+        "vol": 911394.04,
+        "vol_ratio": 1.97,
+        "pct_chg": 5.7966,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260121",
+        "idx": 133,
+        "price": 127.19,
+        "vol": 970525.21,
+        "vol_ratio": 1.62,
+        "pct_chg": 4.1005,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260128",
+        "idx": 138,
+        "price": 128.55,
+        "vol": 994583.26,
+        "vol_ratio": 1.55,
+        "pct_chg": 3.6276,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260213",
+        "idx": 150,
+        "price": 116.93,
+        "vol": 343687.4,
+        "vol_ratio": 0.65,
+        "pct_chg": 0.3002,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20260225",
+        "idx": 152,
+        "price": 116.13,
+        "vol": 275528.56,
+        "vol_ratio": 0.55,
+        "pct_chg": 0.2677,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20260415",
+        "idx": 186,
+        "price": 103.91,
+        "vol": 704839.0,
+        "vol_ratio": 1.91,
+        "pct_chg": 2.3542,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260424",
+        "idx": 193,
+        "price": 110.96,
+        "vol": 910703.63,
+        "vol_ratio": 2.16,
+        "pct_chg": 4.699,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260430",
+        "idx": 197,
+        "price": 118.73,
+        "vol": 1018382.85,
+        "vol_ratio": 1.97,
+        "pct_chg": 5.5659,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260520",
+        "idx": 208,
+        "price": 133.81,
+        "vol": 2248800.56,
+        "vol_ratio": 2.62,
+        "pct_chg": 12.6157,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260525",
+        "idx": 211,
+        "price": 156.0,
+        "vol": 2521802.26,
+        "vol_ratio": 2.39,
+        "pct_chg": 18.7847,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260604",
+        "idx": 219,
+        "price": 134.88,
+        "vol": 778526.88,
+        "vol_ratio": 0.64,
+        "pct_chg": 0.6567,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20260615",
+        "idx": 226,
+        "price": 130.52,
+        "vol": 728604.09,
+        "vol_ratio": 0.62,
+        "pct_chg": 4.5163,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      }
+    ],
+    "sell_signals": [
+      {
+        "date": "20250808",
+        "idx": 29,
+        "price": 86.66,
+        "vol": 584730.5,
+        "vol_ratio": 1.88,
+        "pct_chg": -4.3382,
+        "reason": "放量跌破MA20",
+        "strength": 1
+      },
+      {
+        "date": "20250819",
+        "idx": 36,
+        "price": 89.35,
+        "vol": 744652.14,
+        "vol_ratio": 1.69,
+        "pct_chg": -3.2066,
+        "reason": "放量跌破MA20",
+        "strength": 1
+      },
+      {
+        "date": "20250825",
+        "idx": 40,
+        "price": 103.17,
+        "vol": 1760636.98,
+        "vol_ratio": 2.82,
+        "pct_chg": -0.7695,
+        "reason": "天量滞涨(放量收阴)",
+        "strength": 1
+      },
+      {
+        "date": "20260323",
+        "idx": 170,
+        "price": 98.04,
+        "vol": 506671.26,
+        "vol_ratio": 1.46,
+        "pct_chg": -4.0517,
+        "reason": "放量跌破MA20",
+        "strength": 1
+      }
+    ],
+    "total_days": 236,
+    "phases": [
+      {
+        "start": "20250822",
+        "end": "20251029",
+        "start_price": 103.97,
+        "end_price": 133.0,
+        "change": 27.9,
+        "trend": "up"
+      },
+      {
+        "start": "20251030",
+        "end": "20251218",
+        "start_price": 128.55,
+        "end_price": 112.8,
+        "change": -12.3,
+        "trend": "down"
+      },
+      {
+        "start": "20251219",
+        "end": "20260123",
+        "start_price": 113.63,
+        "end_price": 124.96,
+        "change": 10.0,
+        "trend": "up"
+      },
+      {
+        "start": "20260202",
+        "end": "20260417",
+        "start_price": 117.06,
+        "end_price": 105.23,
+        "change": -10.1,
+        "trend": "down"
+      },
+      {
+        "start": "20260420",
+        "end": "20260605",
+        "start_price": 107.96,
+        "end_price": 127.4,
+        "change": 18.0,
+        "trend": "up"
+      }
+    ]
+  },
+  "gigadevice": {
+    "name": "兆易创新",
+    "buy_signals": [
+      {
+        "date": "20250806",
+        "idx": 27,
+        "price": 118.28,
+        "vol": 114485.67,
+        "vol_ratio": 0.58,
+        "pct_chg": 0.2373,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20250811",
+        "idx": 30,
+        "price": 117.95,
+        "vol": 127981.73,
+        "vol_ratio": 0.64,
+        "pct_chg": 1.3316,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20250821",
+        "idx": 38,
+        "price": 137.16,
+        "vol": 858971.49,
+        "vol_ratio": 3.15,
+        "pct_chg": 7.9915,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20250827",
+        "idx": 42,
+        "price": 158.63,
+        "vol": 623810.58,
+        "vol_ratio": 1.81,
+        "pct_chg": 2.7396,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20250901",
+        "idx": 45,
+        "price": 174.88,
+        "vol": 612797.12,
+        "vol_ratio": 1.6,
+        "pct_chg": 10.0013,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20251113",
+        "idx": 92,
+        "price": 227.5,
+        "vol": 626638.58,
+        "vol_ratio": 1.55,
+        "pct_chg": 8.5919,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20251128",
+        "idx": 103,
+        "price": 203.0,
+        "vol": 215652.25,
+        "vol_ratio": 0.62,
+        "pct_chg": 1.0654,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      },
+      {
+        "date": "20251218",
+        "idx": 117,
+        "price": 214.45,
+        "vol": 418524.71,
+        "vol_ratio": 1.59,
+        "pct_chg": 6.0688,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260105",
+        "idx": 127,
+        "price": 235.68,
+        "vol": 499283.82,
+        "vol_ratio": 1.85,
+        "pct_chg": 10.0023,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260316",
+        "idx": 171,
+        "price": 306.16,
+        "vol": 462735.64,
+        "vol_ratio": 1.77,
+        "pct_chg": 9.9989,
+        "reason": "倍量突破关键均线",
+        "strength": 1
+      },
+      {
+        "date": "20260611",
+        "idx": 230,
+        "price": 483.5,
+        "vol": 296991.43,
+        "vol_ratio": 0.54,
+        "pct_chg": 0.5532,
+        "reason": "缩量回踩支撑反弹",
+        "strength": 1
+      }
+    ],
+    "sell_signals": [
+      {
+        "date": "20251114",
+        "idx": 93,
+        "price": 205.78,
+        "vol": 548633.27,
+        "vol_ratio": 1.32,
+        "pct_chg": -9.5473,
+        "reason": "放量跌破MA20",
+        "strength": 1
+      },
+      {
+        "date": "20260331",
+        "idx": 182,
+        "price": 238.1,
+        "vol": 427623.34,
+        "vol_ratio": 1.42,
+        "pct_chg": -6.9377,
+        "reason": "放量跌破MA20",
+        "strength": 1
+      }
+    ],
+    "total_days": 242,
+    "phases": [
+      {
+        "start": "20250811",
+        "end": "20251114",
+        "start_price": 117.95,
+        "end_price": 205.78,
+        "change": 74.5,
+        "trend": "up"
+      },
+      {
+        "start": "20251117",
+        "end": "20251211",
+        "start_price": 207.5,
+        "end_price": 207.81,
+        "change": 0.1,
+        "trend": "down"
+      },
+      {
+        "start": "20251218",
+        "end": "20260226",
+        "start_price": 214.45,
+        "end_price": 309.4,
+        "change": 44.3,
+        "trend": "up"
+      },
+      {
+        "start": "20260320",
+        "end": "20260417",
+        "start_price": 290.2,
+        "end_price": 288.96,
+        "change": -0.4,
+        "trend": "down"
+      },
+      {
+        "start": "20260420",
+        "end": "20260629",
+        "start_price": 290.54,
+        "end_price": 840.0,
+        "change": 189.1,
+        "trend": "up"
+      }
+    ]
+  }
+}

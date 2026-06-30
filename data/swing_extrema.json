@@ -1007,5 +1007,136 @@
         "score": 3
       }
     ]
+  },
+  "siruixin": {
+    "name": "斯瑞新材",
+    "code": "688102.SH",
+    "min_pct": 4,
+    "peaks": [
+      {
+        "date": "20251009",
+        "price": 18.88,
+        "close": 18.25,
+        "vol": 217326.56,
+        "pct_chg": 4.0479,
+        "from_trough_pct": 29.3,
+        "confidence": "强",
+        "vol_ratio": 1.79,
+        "reasons": [
+          "温和放量见顶",
+          "长上影线(抛压明显)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260112",
+        "price": 56.17,
+        "close": 54.39,
+        "vol": 653859.19,
+        "pct_chg": 16.1931,
+        "from_trough_pct": 248.9,
+        "confidence": "中",
+        "vol_ratio": 1.06,
+        "reasons": [
+          "长上影线(抛压明显)"
+        ],
+        "score": 2
+      },
+      {
+        "date": "20260302",
+        "price": 47.0,
+        "close": 46.48,
+        "vol": 312022.57,
+        "pct_chg": 6.826,
+        "from_trough_pct": 25.9,
+        "confidence": "中",
+        "vol_ratio": 1.42,
+        "reasons": [
+          "温和放量见顶"
+        ],
+        "score": 1
+      },
+      {
+        "date": "20260511",
+        "price": 48.0,
+        "close": 47.36,
+        "vol": 314506.65,
+        "pct_chg": 1.7401,
+        "from_trough_pct": 45.9,
+        "confidence": "中",
+        "vol_ratio": 1.24,
+        "reasons": [
+          "温和放量见顶"
+        ],
+        "score": 1
+      }
+    ],
+    "troughs": [
+      {
+        "date": "20250904",
+        "price": 14.6,
+        "close": 14.92,
+        "vol": 166094.12,
+        "pct_chg": -5.2097,
+        "from_peak_pct": 19.4,
+        "confidence": "弱",
+        "vol_ratio": 0.86,
+        "reasons": [],
+        "score": 0
+      },
+      {
+        "date": "20251017",
+        "price": 16.1,
+        "close": 16.16,
+        "vol": 148863.06,
+        "pct_chg": -4.8852,
+        "from_peak_pct": 14.7,
+        "confidence": "弱",
+        "vol_ratio": 1.14,
+        "reasons": [],
+        "score": 0
+      },
+      {
+        "date": "20260224",
+        "price": 37.33,
+        "close": 37.84,
+        "vol": 119971.26,
+        "pct_chg": -1.1236,
+        "from_peak_pct": 33.5,
+        "confidence": "强",
+        "vol_ratio": 0.5,
+        "reasons": [
+          "地量地价(缩量筑底)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260407",
+        "price": 32.9,
+        "close": 33.38,
+        "vol": 139013.2,
+        "pct_chg": -2.9369,
+        "from_peak_pct": 30.0,
+        "confidence": "弱",
+        "vol_ratio": 0.93,
+        "reasons": [],
+        "score": 0
+      },
+      {
+        "date": "20260602",
+        "price": 33.64,
+        "close": 34.72,
+        "vol": 113172.14,
+        "pct_chg": 0.3178,
+        "from_peak_pct": 29.9,
+        "confidence": "强",
+        "vol_ratio": 0.48,
+        "reasons": [
+          "地量地价(缩量筑底)",
+          "长下影线(支撑强劲)"
+        ],
+        "score": 5
+      }
+    ]
   }
 }

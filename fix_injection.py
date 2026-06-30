@@ -9,7 +9,7 @@ with open(HTML) as f:
     html = f.read()
 
 RAW = {}
-for key in ["smic", "gigadevice", "goldwind", "bright", "leader"]:
+for key in ["smic", "gigadevice", "goldwind", "bright", "leader", "siruixin"]:
     with open(f"{DIR}/data/{key}_daily.json") as f:
         RAW[key] = json.load(f)
 

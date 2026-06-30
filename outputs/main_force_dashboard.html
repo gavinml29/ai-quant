@@ -240,24 +240,36 @@ function buildInsight(domId,data,force,swing){
   document.getElementById(domId).innerHTML=html;
 }
 
-function init(){
-  var d_smic=parse(RAW_SMIC),d_giga=parse(RAW_GIGA);
+var _cache={smic:null,giga:null},_built={};
+
+document.addEventListener('DOMContentLoaded',function(){
+  _cache.smic=parse(RAW_SMIC);
+  _cache.giga=parse(RAW_GIGA);
   buildForceCard('force-smic',FORCE.smic,FORCE.smic.swing_signals);
   buildForceCard('force-giga',FORCE.gigadevice,FORCE.gigadevice.swing_signals);
-  buildChart('chart-smic',d_smic,FORCE.smic.swing_signals);
-  buildChart('chart-giga',d_giga,FORCE.gigadevice.swing_signals);
   buildSwingList('swing-smic',FORCE.smic.swing_signals);
   buildSwingList('swing-giga',FORCE.gigadevice.swing_signals);
-  buildInsight('insight-smic',d_smic,FORCE.smic,FORCE.smic.swing_signals);
-  buildInsight('insight-giga',d_giga,FORCE.gigadevice,FORCE.gigadevice.swing_signals);
-}
-init();
+  buildInsight('insight-smic',_cache.smic,FORCE.smic,FORCE.smic.swing_signals);
+  buildInsight('insight-giga',_cache.giga,FORCE.gigadevice,FORCE.gigadevice.swing_signals);
+  // 只建可见tab的图表
+  buildChart('chart-smic',_cache.smic,FORCE.smic.swing_signals);
+  _built.smic=true;
+});
 
 function switchTab(tab){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
   document.querySelector('.tab:nth-child('+(tab==='smic'?1:2)+')').classList.add('active');
   document.getElementById('panel-'+tab).classList.add('active');
+  // 懒加载图表
+  if(!_built[tab]){
+    setTimeout(function(){
+      var d=tab==='smic'?_cache.smic:_cache.giga;
+      var f=tab==='smic'?FORCE.smic:FORCE.gigadevice;
+      buildChart('chart-'+tab,d,f.swing_signals);
+      _built[tab]=true;
+    },100);
+  }
 }
 </script>
 </body>

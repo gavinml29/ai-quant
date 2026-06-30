@@ -138,17 +138,15 @@ function buildChart(domId,data,swing){
   var signals=swing.signals;
   var dateIdx={};dates.forEach(function(d,i){dateIdx[d]=i});
 
-  // 构建波段买卖标记 (用于 markPoint 和 竖线)
-  var buyPts=[],sellPts=[],markLines=[];
+  // 构建买卖标记
+  var buyPts=[],sellPts=[];
   signals.forEach(function(s){
     var idx=dateIdx[fmt(s.date)];
     if(idx===undefined)return;
     if(s.action==='BUY'){
-      buyPts.push({name:'B',coord:[idx,s.price],value:s.reason,itemStyle:{color:'#ff4757'},label:{color:'#fff',formatter:'买入'},symbol:'pin',symbolSize:40});
-      markLines.push({xAxis:idx,label:{show:true,formatter:'买入\n¥'+s.price,position:'start',color:'#ff4757',fontSize:10},lineStyle:{color:'rgba(255,71,87,.3)',type:'dashed',width:1}});
+      buyPts.push({name:'买入 ¥'+s.price,coord:[idx,s.price],itemStyle:{color:'#ff4757'},label:{color:'#fff',formatter:'B'},symbol:'pin',symbolSize:45});
     }else{
-      sellPts.push({name:'S',coord:[idx,s.price],value:s.reason,itemStyle:{color:'#2ed573'},label:{color:'#fff',formatter:'卖出'},symbol:'pin',symbolSize:40,symbolRotate:180});
-      markLines.push({xAxis:idx,label:{show:true,formatter:'卖出\n¥'+s.price,position:'end',color:'#2ed573',fontSize:10},lineStyle:{color:'rgba(46,213,115,.3)',type:'dashed',width:1}});
+      sellPts.push({name:'卖出 ¥'+s.price,coord:[idx,s.price],itemStyle:{color:'#2ed573'},label:{color:'#fff',formatter:'S'},symbol:'pin',symbolSize:45});
     }
   });
 
@@ -170,8 +168,7 @@ function buildChart(domId,data,swing){
     ],
     series:[
       {name:'K线',type:'candlestick',data:ohlc,itemStyle:{color:'#ff4757',color0:'#2ed573',borderColor:'#ff4757',borderColor0:'#2ed573'},
-        markPoint:{symbol:'pin',symbolSize:42,label:{fontSize:11,fontWeight:'bold'},data:buyPts.concat(sellPts)},
-        markLine:{symbol:'none',data:markLines,animation:false}
+        markPoint:{symbol:'pin',symbolSize:45,label:{fontSize:11,fontWeight:'bold',distance:5},data:buyPts.concat(sellPts)}
       },
       {name:'MA5',type:'line',data:ma5,smooth:true,lineStyle:{width:1,color:'#ffa502'},symbol:'none'},
       {name:'MA10',type:'line',data:ma10,smooth:true,lineStyle:{width:1,color:'#ff6b81'},symbol:'none'},

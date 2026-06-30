@@ -8,7 +8,7 @@ with open(TPL) as f:
 
 RAW = {}
 DIR = "/Users/gavin/WorkBuddy/AiQuant/data"
-for key in ["smic", "gigadevice", "goldwind", "bright"]:
+for key in ["smic", "gigadevice", "goldwind", "bright", "leader"]:
     with open(f"{DIR}/{key}_daily.json") as f:
         RAW[key] = json.load(f)
 

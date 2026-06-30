@@ -860,5 +860,152 @@
       214,
       230
     ]
+  },
+  "leader": {
+    "name": "绿的谐波",
+    "code": "688017.SH",
+    "min_pct": 5,
+    "peaks": [
+      {
+        "date": "20250918",
+        "price": 192.68,
+        "close": 182.19,
+        "vol": 169568.02,
+        "pct_chg": 1.5665,
+        "from_trough_pct": 52.7,
+        "confidence": "强",
+        "vol_ratio": 1.6,
+        "reasons": [
+          "温和放量见顶",
+          "长上影线(抛压明显)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20251031",
+        "price": 167.7,
+        "close": 163.24,
+        "vol": 64238.73,
+        "pct_chg": 2.076,
+        "from_trough_pct": 11.4,
+        "confidence": "中",
+        "vol_ratio": 1.24,
+        "reasons": [
+          "温和放量见顶"
+        ],
+        "score": 1
+      },
+      {
+        "date": "20260130",
+        "price": 241.98,
+        "close": 229.0,
+        "vol": 147291.4,
+        "pct_chg": 7.785,
+        "from_trough_pct": 73.3,
+        "confidence": "强",
+        "vol_ratio": 1.38,
+        "reasons": [
+          "温和放量见顶",
+          "长上影线(抛压明显)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20260224",
+        "price": 248.42,
+        "close": 232.7,
+        "vol": 130951.59,
+        "pct_chg": -3.9937,
+        "from_trough_pct": 25.2,
+        "confidence": "中",
+        "vol_ratio": 1.35,
+        "reasons": [
+          "温和放量见顶"
+        ],
+        "score": 1
+      },
+      {
+        "date": "20260608",
+        "price": 450.2,
+        "close": 428.25,
+        "vol": 290407.69,
+        "pct_chg": 8.9695,
+        "from_trough_pct": 155.7,
+        "confidence": "强",
+        "vol_ratio": 1.91,
+        "reasons": [
+          "天量天价(放量见顶)",
+          "长上影线(抛压明显)"
+        ],
+        "score": 5
+      }
+    ],
+    "troughs": [
+      {
+        "date": "20250801",
+        "price": 126.17,
+        "close": 127.51,
+        "vol": 40985.44,
+        "pct_chg": -1.6582,
+        "from_peak_pct": 8.6,
+        "confidence": "弱",
+        "vol_ratio": 0.87,
+        "reasons": [],
+        "score": 0
+      },
+      {
+        "date": "20251023",
+        "price": 150.6,
+        "close": 154.51,
+        "vol": 31369.12,
+        "pct_chg": -0.7643,
+        "from_peak_pct": 21.8,
+        "confidence": "强",
+        "vol_ratio": 0.48,
+        "reasons": [
+          "地量地价(缩量筑底)"
+        ],
+        "score": 3
+      },
+      {
+        "date": "20251121",
+        "price": 139.62,
+        "close": 143.35,
+        "vol": 42801.31,
+        "pct_chg": 1.0076,
+        "from_peak_pct": 16.7,
+        "confidence": "弱",
+        "vol_ratio": 1.12,
+        "reasons": [],
+        "score": 0
+      },
+      {
+        "date": "20260206",
+        "price": 198.48,
+        "close": 217.4,
+        "vol": 122211.14,
+        "pct_chg": 5.9867,
+        "from_peak_pct": 18.0,
+        "confidence": "弱",
+        "vol_ratio": 1.13,
+        "reasons": [],
+        "score": 0
+      },
+      {
+        "date": "20260324",
+        "price": 176.1,
+        "close": 181.99,
+        "vol": 44571.64,
+        "pct_chg": 0.6137,
+        "from_peak_pct": 29.1,
+        "confidence": "强",
+        "vol_ratio": 0.8,
+        "reasons": [
+          "缩量接近底部",
+          "长下影线(支撑强劲)"
+        ],
+        "score": 3
+      }
+    ]
   }
 }

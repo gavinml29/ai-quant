@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTZigzag - 实时波段信号系统</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5;color:#333}
+    .header{background:linear-gradient(135deg,#0f0f23 0%,#1a1a3e 100%);color:#fff;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .header h1{font-size:20px;font-weight:700}
+    .header .subtitle{font-size:12px;opacity:.6;margin-top:2px}
+    .header-right{display:flex;gap:20px}
+    .stat{text-align:center}
+    .stat .label{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:1px}
+    .stat .value{font-size:18px;font-weight:700;margin-top:2px}
+    .tabs{display:flex;background:#fff;padding:0 20px;border-bottom:1px solid #e0e0e0;overflow-x:auto}
+    .tab{padding:12px 20px;cursor:pointer;font-size:14px;color:#666;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
+    .tab:hover{color:#333}
+    .tab.active{color:#1a1a3e;border-bottom-color:#1a1a3e;font-weight:600}
+    .container{max-width:1400px;margin:0 auto;padding:20px}
+    .panel{display:none}
+    .panel.active{display:block}
+    .card{background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.05);padding:18px;margin-bottom:16px}
+    .card-title{font-size:14px;font-weight:600;color:#1a1a3e;margin-bottom:14px;padding-left:10px;border-left:3px solid #1a1a3e;display:flex;justify-content:space-between;align-items:center}
+    .chart-wrap{width:100%;height:500px}
+    .alert-list{max-height:300px;overflow-y:auto}
+    .alert-item{display:flex;align-items:center;padding:10px 12px;margin-bottom:6px;border-radius:6px;font-size:13px;cursor:default;transition:background .15s}
+    .alert-item:hover{background:#f5f5f5}
+    .alert-item.buy{background:#fff5f5;border-left:3px solid #ff4757}
+    .alert-item.sell{background:#f0fff4;border-left:3px solid #2ed573}
+    .alert-item .icon{font-size:16px;margin-right:8px}
+    .alert-item .time{font-size:11px;color:#999;margin-left:auto}
+    .alert-item .strength{display:inline-block;width:50px;text-align:center}
+    .signal-card{display:flex;align-items:center;padding:12px;margin-bottom:8px;border-radius:8px;border:1px solid #e0e0e0}
+    .signal-card.high{border-color:#ffa502;background:#fffbeb}
+    .signal-card .sig-type{width:60px;text-align:center;font-weight:700;font-size:13px;padding:4px 8px;border-radius:4px}
+    .signal-card .sig-type.buy{background:#ff4757;color:#fff}
+    .signal-card .sig-type.sell{background:#2ed573;color:#fff}
+    .signal-card .sig-detail{flex:1;margin-left:12px;font-size:13px}
+    .signal-card .sig-desc{color:#666;font-size:12px;margin-top:2px}
+    .signal-card .sig-conf{text-align:right;font-size:14px;margin-left:8px}
+    .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+    .badge.l1{background:#e8eaf6;color:#3f51b5}
+    .badge.l2{background:#fff3e0;color:#e65100}
+    .badge.l3{background:#fce4ec;color:#c62828}
+    .legend{display:flex;gap:16px;font-size:12px;color:#888;margin-bottom:10px}
+    .legend-item{display:flex;align-items:center;gap:4px}
+    .legend-dot{width:12px;height:12px;border-radius:50%}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+    .insight-box{padding:14px;background:#f8f9fd;border-radius:8px;font-size:13px;line-height:1.8}
+    .insight-box strong{color:#1a1a3e}
+    .insight-box .action{display:inline-block;padding:3px 10px;border-radius:4px;font-weight:700;margin:0 4px}
+    .insight-box .action.buy{background:#ff4757;color:#fff}
+    .insight-box .action.sell{background:#2ed573;color:#fff}
+    .footer{text-align:center;font-size:11px;color:#aaa;padding:14px}
+    .empty{text-align:center;padding:40px;color:#999;font-size:14px}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+    .info-item{background:#f8f9fd;padding:10px;border-radius:6px;text-align:center}
+    .info-item .ilabel{font-size:11px;color:#888;margin-bottom:3px}
+    .info-item .ivalue{font-size:18px;font-weight:700}
+    .ivalue.red{color:#ff4757}.ivalue.green{color:#2ed573}
+  </style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>RTZigzag · 实时波段信号系统</h1>
+    <div class="subtitle">分钟级Zigzag + 量价预警 + 三级共振确认</div>
+  </div>
+  <div class="header-right">
+    <div class="stat"><div class="label">数据频率</div><div class="value">30min</div></div>
+    <div class="stat"><div class="label">信号层级</div><div class="value">3级</div></div>
+    <div class="stat"><div class="label">覆盖股票</div><div class="value" id="stockCount">-</div></div>
+  </div>
+</div>
+<div class="tabs" id="tabBar"></div>
+<div class="container" id="panels"></div>
+<div class="footer">RTZigzag · 分钟级波段信号 · WeStock Data + Tushare Pro</div>
+
+<script>
+var RAW=__RAW_30MIN__;
+var EXTREMA=__EXTREMA__;
+var ALERTS=__ALERTS__;
+var SIGNALS=__SIGNALS__;
+
+var KEYS=Object.keys(RAW);
+var NAMES={smic:'中芯国际',gigadevice:'兆易创新',goldwind:'金风科技',bright:'铂力特',leader:'绿的谐波',siruixin:'斯瑞新材',montage:'澜起科技'};
+var CODES={smic:'688981',gigadevice:'603986',goldwind:'002202',bright:'688333',leader:'688017',siruixin:'688102',montage:'688008'};
+
+var _charts={};
+var _loaded={};
+
+document.getElementById('stockCount').textContent=KEYS.length;
+
+// 构建Tabs和Panels
+function buildUI(){
+  var tabBar=document.getElementById('tabBar');
+  var panels=document.getElementById('panels');
+  var html_tabs='',html_panels='';
+
+  KEYS.forEach(function(key,i){
+    var name=NAMES[key]||key;
+    var code=CODES[key]||'';
+    var active=i===0?'active':'';
+    var signals=SIGNALS[key]||[];
+    var highCount=signals.filter(function(s){return s.confidence>=3}).length;
+    var badge=highCount>0?' <span style="color:#ffa502;font-size:11px">('+highCount+'高置信)</span>':'';
+
+    html_tabs+='<div class="tab '+active+'" onclick="switchTab(\''+key+'\')">'+name+' · '+code+badge+'</div>';
+    html_panels+='<div class="panel '+active+'" id="panel-'+key+'">'+
+      '<div class="card"><div class="card-title">30分钟K线 · Zigzag波段结构'+
+        '<div class="legend">'+
+          '<div class="legend-item"><div class="legend-dot" style="background:#ff4757"></div>波谷(买入)</div>'+
+          '<div class="legend-item"><div class="legend-dot" style="background:#2ed573"></div>波峰(卖出)</div>'+
+          '<div class="legend-item"><div class="legend-dot" style="background:#ffa502"></div>高置信共振</div>'+
+        '</div>'+
+      '</div><div class="chart-wrap" id="chart-'+key+'"></div></div>'+
+      '<div class="grid-2">'+
+        '<div class="card"><div class="card-title">共振信号 ('+signals.length+')</div><div id="signals-'+key+'" class="signal-list">'+
+          renderSignals(signals)+'</div></div>'+
+        '<div class="card"><div class="card-title">量价预警 ('+(ALERTS[key]||[]).length+')</div><div id="alerts-'+key+'" class="alert-list">'+
+          renderAlerts(ALERTS[key]||[])+'</div></div>'+
+      '</div>'+
+      '<div class="card"><div class="card-title">操作建议</div><div class="insight-box" id="insight-'+key+'">'+
+        renderInsight(key,signals)+'</div></div>'+
+    '</div>';
+  });
+
+  tabBar.innerHTML=html_tabs;
+  panels.innerHTML=html_panels;
+
+  // 初始化第一个图表
+  setTimeout(function(){initChart(KEYS[0])},100);
+}
+
+function renderSignals(signals){
+  if(!signals||signals.length===0) return '<div class="empty">暂无共振信号</div>';
+  var html='';
+  signals.slice().reverse().forEach(function(s){
+    var isHigh=s.confidence>=3;
+    var typeClass=s.type==='BUY'?'buy':'sell';
+    var typeLabel=s.type==='BUY'?'买入':'卖出';
+    html+='<div class="signal-card '+(isHigh?'high':'')+'">'+
+      '<div class="sig-type '+typeClass+'">'+typeLabel+'</div>'+
+      '<div class="sig-detail">'+
+        '<strong>'+s.zigzag_point.time.slice(5,16).replace(' ',' ')+'</strong> ¥'+s.zigzag_point.price+' '+
+        '<span class="badge '+(s.confidence>=3?'l3':'l2')+'">'+(s.daily_trend||'?')+'</span> '+
+        '<div class="sig-desc">'+s.desc+'</div>'+
+      '</div>'+
+      '<div class="sig-conf">'+s.confidence_label+'</div>'+
+    '</div>';
+  });
+  return html;
+}
+
+function renderAlerts(alerts){
+  if(!alerts||alerts.length===0) return '<div class="empty">暂无量价预警</div>';
+  var html='';
+  alerts.slice().reverse().forEach(function(a){
+    var typeClass=a.type==='BUY'?'buy':'sell';
+    var icon=a.type==='BUY'?'🔴':'🟢';
+    var stars='⭐'.repeat(a.strength);
+    html+='<div class="alert-item '+typeClass+'">'+
+      '<span class="icon">'+icon+'</span>'+
+      '<div><strong>'+a.signal+'</strong> '+a.desc+'</div>'+
+      '<span class="strength">'+stars+'</span>'+
+      '<span class="time">'+a.time.slice(5,16).replace(' ',' ')+'</span>'+
+    '</div>';
+  });
+  return html;
+}
+
+function renderInsight(key,signals){
+  var data=RAW[key]||[];
+  if(data.length===0) return '<div class="empty">无数据</div>';
+  var lastPrice=data[data.length-1].close;
+  var firstPrice=data[0].close;
+  var change=((lastPrice-firstPrice)/firstPrice*100);
+  var name=NAMES[key]||key;
+  var code=CODES[key]||'';
+  var highSignals=signals.filter(function(s){return s.confidence>=3});
+  var buySignals=signals.filter(function(s){return s.type==='BUY'&&s.confidence>=3});
+  var sellSignals=signals.filter(function(s){return s.type==='SELL'&&s.confidence>=3});
+
+  var html='<strong>'+name+' ('+code+')</strong> 最新价 ¥'+lastPrice.toFixed(2)+
+    '，近5日涨跌 <span style="color:'+(change>=0?'#ff4757':'#2ed573')+';font-weight:700">'+
+    (change>=0?'+':'')+change.toFixed(2)+'%</span><br><br>';
+
+  if(highSignals.length===0){
+    html+='当前无高置信度信号（≥3⭐），建议<span class="action" style="background:#e0e0e0">观望</span>。';
+    html+='<br>低置信度信号仍可作为预警参考，但不建议直接作为交易依据。';
+  }else{
+    html+='检测到 <strong>'+highSignals.length+'</strong> 个高置信度信号：<br>';
+    if(buySignals.length>0){
+      html+='• <span class="action buy">买入信号</span> '+buySignals.length+'个，最近 '+
+        buySignals[buySignals.length-1].zigzag_point.time.slice(5,16)+
+        ' @ ¥'+buySignals[buySignals.length-1].zigzag_point.price;
+    }
+    if(sellSignals.length>0){
+      html+='<br>• <span class="action sell">卖出信号</span> '+sellSignals.length+'个，最近 '+
+        sellSignals[sellSignals.length-1].zigzag_point.time.slice(5,16)+
+        ' @ ¥'+sellSignals[sellSignals.length-1].zigzag_point.price;
+    }
+    html+='<br><br><span style="color:#888;font-size:12px">⚠️ 信号仅供参考，不构成投资建议。请结合基本面和市场环境综合判断。</span>';
+  }
+
+  return html;
+}
+
+function initChart(key){
+  if(_loaded[key]) return;
+  _loaded[key]=true;
+
+  var data=RAW[key];
+  if(!data||data.length===0) return;
+
+  var dom=document.getElementById('chart-'+key);
+  if(!dom) return;
+
+  var chart=echarts.init(dom);
+  _charts[key]=chart;
+
+  var times=data.map(function(d){return d.trade_time.slice(5,16);});
+  var ohlc=data.map(function(d){return [d.open,d.close,d.low,d.high];});
+  var vols=data.map(function(d){return d.vol;});
+
+  // MA
+  function calcMA(values,period){
+    var r=[];
+    for(var i=0;i<values.length;i++){
+      if(i<period-1){r.push(null)}
+      else{var s=0;for(var j=0;j<period;j++)s+=values[i-j];r.push(+(s/period).toFixed(2))}
+    }
+    return r;
+  }
+  var closes=data.map(function(d){return d.close;});
+  var ma5=calcMA(closes,5),ma10=calcMA(closes,10),ma20=calcMA(closes,20);
+
+  // Zigzag极值点标注
+  var ext=EXTREMA[key]||{};
+  var peaks=ext.peaks||[];
+  var troughs=ext.troughs||[];
+  var markPoints=[];
+
+  peaks.forEach(function(p){
+    var idx=times.indexOf(p.time.slice(5,16));
+    if(idx>=0) markPoints.push({name:'S',coord:[idx,p.price],itemStyle:{color:'#2ed573'},label:{color:'#fff',formatter:'卖'},symbol:'pin',symbolSize:36,symbolRotate:180});
+  });
+  troughs.forEach(function(t){
+    var idx=times.indexOf(t.time.slice(5,16));
+    if(idx>=0) markPoints.push({name:'B',coord:[idx,t.price],itemStyle:{color:'#ff4757'},label:{color:'#fff',formatter:'买'},symbol:'pin',symbolSize:36});
+  });
+
+  // 高置信信号用大图标
+  var sigs=SIGNALS[key]||[];
+  sigs.forEach(function(s){
+    if(s.confidence>=3){
+      var idx=times.indexOf(s.zigzag_point.time.slice(5,16));
+      if(idx>=0){
+        markPoints.push({
+          name:'HC',coord:[idx,s.zigzag_point.price],
+          itemStyle:{color:'#ffa502',borderColor:'#fff',borderWidth:2},
+          label:{color:'#fff',formatter:'★',fontSize:14,fontWeight:'bold'},
+          symbol:'circle',symbolSize:28
+        });
+      }
+    }
+  });
+
+  chart.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'cross'}},
+    grid:[{left:'8%',right:'3%',top:30,height:'64%'},{left:'8%',right:'3%',top:'74%',height:'18%'}],
+    xAxis:[
+      {type:'category',data:times,axisLabel:{fontSize:10,formatter:function(v){return v.slice(5)}},axisTick:{alignWithLabel:true},splitLine:{show:false}},
+      {type:'category',gridIndex:1,data:times,axisLabel:{show:false},axisTick:{show:false},splitLine:{show:false}}
+    ],
+    yAxis:[
+      {type:'value',scale:true,axisLabel:{fontSize:10,formatter:function(v){return v.toFixed(0)}},splitLine:{lineStyle:{color:'#eee',type:'dashed'}}},
+      {type:'value',gridIndex:1,axisLabel:{show:false},splitLine:{show:false}}
+    ],
+    dataZoom:[{type:'inside',xAxisIndex:[0,1],start:0,end:100},{type:'slider',xAxisIndex:[0,1],bottom:0,height:18,start:0,end:100,borderColor:'#ddd',fillerColor:'rgba(26,26,46,.08)'}],
+    series:[
+      {name:'K线',type:'candlestick',data:ohlc,
+        itemStyle:{color:'#ff4757',color0:'#2ed573',borderColor:'#ff4757',borderColor0:'#2ed573'},
+        markPoint:{symbol:'pin',symbolSize:38,label:{fontSize:11,fontWeight:'bold'},data:markPoints}
+      },
+      {name:'MA5',type:'line',data:ma5,smooth:true,lineStyle:{width:1,color:'#eccc68'},symbol:'none'},
+      {name:'MA10',type:'line',data:ma10,smooth:true,lineStyle:{width:1,color:'#ff6b81'},symbol:'none'},
+      {name:'MA20',type:'line',data:ma20,smooth:true,lineStyle:{width:1.5,color:'#70a1ff'},symbol:'none'},
+      {name:'成交量',type:'bar',xAxisIndex:1,yAxisIndex:1,
+        data:vols.map(function(v,i){return{value:v,itemStyle:{color:data[i].close>=data[i].open?'#ff4757':'#2ed573'}}}),
+        large:true}
+    ]
+  });
+}
+
+function switchTab(key){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+  // 找到对应的tab和panel
+  var tabs=document.querySelectorAll('.tab');
+  KEYS.forEach(function(k,i){
+    if(k===key){
+      tabs[i].classList.add('active');
+      var p=document.getElementById('panel-'+k);
+      if(p)p.classList.add('active');
+    }
+  });
+  // 懒加载图表
+  setTimeout(function(){initChart(key);if(_charts[key])_charts[key].resize()},50);
+}
+
+window.addEventListener('resize',function(){
+  Object.values(_charts).forEach(function(c){if(c)c.resize()});
+});
+
+document.addEventListener('DOMContentLoaded',buildUI);
+</script>
+</body>
+</html>
